@@ -18,7 +18,7 @@ Extra steps needed: 1. Set up the GOOGLE SHEET ID Secrte Variable
 
 ## Step 2: Trigger-Action Mapping
 
-## Step 3: Demo Testing and Iteration
+## Step 3: Demo Testing and Feature Iteration
 
 ## Step 4: Deployment
 
