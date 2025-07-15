@@ -159,7 +159,7 @@ class CSVIssueCreator:
             
             for index, row in df.iterrows():
                 paper_id = row['Paper ID']
-                title = row['Paper Title']
+                title = paper_id  # Use Paper ID as the issue title
                 
                 # Skip if already processed
                 if paper_id in self.processed_ids:
