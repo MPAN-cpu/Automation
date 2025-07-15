@@ -1,51 +1,42 @@
-name: Issue Creator_Option_1_CSV
+name: Create Issues from CSV
 
 on:
-  schedule:
-    # Run every day at 9:00 AM UTC
-    - cron: '0 9 * * *'
-  workflow_dispatch:
-    # Allow manual triggering
   push:
-    # Run when CSV files are pushed to the repository
     paths:
-      - '*.csv'
-      - 'csv_issue_creator.py'
+      - 'test_sample_data.csv'
+  workflow_dispatch:
 
 jobs:
-  monitor-csv:
+  create-issues:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        
-    - name: Create .env file
-      run: |
-        echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> .env
-        echo "GITHUB_REPOSITORY=${{ github.repository }}" >> .env
-        
-    - name: Run CSV Issue Creator
-      run: |
-        python csv_issue_creator.py
-        
-    - name: Commit processed IDs file
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add processed_ids.json
-        git diff --quiet && git diff --staged --quiet || git commit -m "Update processed Paper IDs [skip ci]"
-        
-    - name: Push changes
-      run: |
-        git push 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run CSV Issue Creator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python csv_issue_creator.py test_sample_data.csv
+      
+      - name: Commit processed IDs file
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add processed_ids.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update processed Paper IDs [skip ci]"
+      
+      - name: Push changes
+        run: |
+          git push 
