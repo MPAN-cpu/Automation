@@ -25,7 +25,7 @@ jobs:
       
       - name: Run CSV Issue Creator
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           python csv_issue_creator.py test_sample_data.csv
