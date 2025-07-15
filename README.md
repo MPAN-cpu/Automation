@@ -6,7 +6,7 @@ It could either be static file to be iterated through later updates, or a file o
 
 ## Step 1: Issues Initialization
 
-There are mainly two pathways to achieve the issue initization on this repo, including update csv file (push) and update continuously on Google Sheet. The automation is mainly achieved through written scripts and Github Action yml file.
+There are mainly two pathways to achieve the issue initization on this repo, including update .csv file (push) and update continuously on Google Sheet. The automation is mainly achieved through written scripts and Github Action .yml file.
 
 #### Option 1: Upload the data file (.csv)
 
