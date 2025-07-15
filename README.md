@@ -1,6 +1,6 @@
 # Automation
 
-## Step 0: Pre-setup_Preparing the Assignment File
+## Step 0: Preparing the Assignment File
 
 It could either be static file to be iterated through later updates, or a file on the Cloud (such as Google Sheet). 
 
