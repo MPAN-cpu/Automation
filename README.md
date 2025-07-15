@@ -6,9 +6,11 @@ It could either be static file to be iterated through later updates, or a file o
 
 ## Step 1: Issues Initialization
 
-There are mainly two pathways to achieve the issue initization on this repo, including update csv file (push) and update continuously on Google Sheet.
+There are mainly two pathways to achieve the issue initization on this repo, including update csv file (push) and update continuously on Google Sheet. The automation is mainly achieved through written scripts and Github Action yml file.
 
-#### Option 1: Upload the data file (.csv) 
+#### Option 1: Upload the data file (.csv)
+
+
 
 #### Option 2: Update the data on Google Sheet
 
@@ -19,6 +21,8 @@ Extra steps needed: 1. Set up the GOOGLE SHEET ID Secrte Variable
 ## Step 3: Demo Testing and Iteration
 
 ## Step 4: Deployment
+
+
 
 When the paper is ready, it will show this default value "Ready to Code", accompanied with a Paper_Stages_Stage 1 Pending. <Event> 
 When the coder 
