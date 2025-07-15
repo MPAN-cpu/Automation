@@ -2,7 +2,7 @@
 
 ## Step 0: Preparing the Assignment File
 
-It could either be static file to be iterated through later updates, or a file on the Cloud (such as Google Sheet). 
+It could either be a static file (.csv) to be updated later, or a file on the Cloud (such as Google Sheet). It should at least have a column "Paper ID".
 
 ## Step 1: Issues Initialization
 
