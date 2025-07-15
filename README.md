@@ -18,30 +18,19 @@ Extra steps needed: 1. Set up the GOOGLE SHEET ID Secrte Variable
 
 ## Step 2: Trigger-Action Mapping
 
+- Ready to Code: When the paper is ready, it will show this default value "Ready to Code", accompanied with a Paper_Stages_Stage 1 Pending. 
+- Supervisor Check
+- Done
+- On hold
+- Remove from Pilot
+
+- **[Trigger]** When a coder submit a form for the Paper (Paper ID) at the particular stage (i.e.,Stage 1), **[Action]** move to Stage 1 Coded.
+- **[Trigger]** When a supervisor review and submit a form for the Paper (Paper ID, sup_survey = 1) , **[Action]** move to Stage 1 Reviewed.
+
 ## Step 3: Demo Testing and Feature Iteration
 
 ## Step 4: Deployment
 
-
-
-When the paper is ready, it will show this default value "Ready to Code", accompanied with a Paper_Stages_Stage 1 Pending. <Event> 
-When the coder 
-
-The following table shows the relationship 
-
-
-Status_Supervisor Check: 
-
-
-
-
-Done
-
-
-On hold
-
-
-Remove from Pilot
 
 
 
