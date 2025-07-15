@@ -28,4 +28,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          python csv_issue_creator.py test_sample_data.csv 
+          python csv_issue_creator.py test_sample_data.csv
+
+      - name: Commit processed IDs file
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add processed_ids.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update processed Paper IDs [skip ci]"
+
+      - name: Push changes
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: |
+          git push https://x-access-token:${PERSONAL_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
