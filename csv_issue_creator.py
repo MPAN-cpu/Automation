@@ -87,7 +87,7 @@ class CSVIssueCreator:
             df = pd.read_csv(self.csv_file_path)
             
             # Check if required columns exist
-            required_columns = ['Paper ID', 'Title', 'Authors']
+            required_columns = ['Paper ID', 'Paper Title', 'Coder', 'Supervisor', 'Collection']
             missing_columns = [col for col in required_columns if col not in df.columns]
             
             if missing_columns:
@@ -108,25 +108,16 @@ class CSVIssueCreator:
         """Create the body content for a GitHub issue"""
         body_parts = []
         
-        # Add authors if available
-        if 'Authors' in row and pd.notna(row['Authors']):
-            body_parts.append(f"**Authors:** {row['Authors']}")
+        # Add Collection
+        if 'Collection' in row and pd.notna(row['Collection']):
+            body_parts.append(f"**Collection:** {row['Collection']}")
         
-        # Add abstract if available
-        if 'Abstract' in row and pd.notna(row['Abstract']):
-            body_parts.append(f"\n**Abstract:**\n{row['Abstract']}")
-        
-        # Add keywords if available
-        if 'Keywords' in row and pd.notna(row['Keywords']):
-            body_parts.append(f"\n**Keywords:** {row['Keywords']}")
-        
-        # Add publication date if available
-        if 'Publication Date' in row and pd.notna(row['Publication Date']):
-            body_parts.append(f"\n**Publication Date:** {row['Publication Date']}")
-        
-        # Add DOI if available
-        if 'DOI' in row and pd.notna(row['DOI']):
-            body_parts.append(f"\n**DOI:** {row['DOI']}")
+        # Add Coder and Supervisor as Authors
+        coder = row['Coder'] if 'Coder' in row and pd.notna(row['Coder']) else ''
+        supervisor = row['Supervisor'] if 'Supervisor' in row and pd.notna(row['Supervisor']) else ''
+        authors = ', '.join(filter(None, [coder, supervisor]))
+        if authors:
+            body_parts.append(f"**Authors:** {authors}")
         
         # Add metadata
         body_parts.append(f"\n---\n*Issue created automatically from CSV on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*")
@@ -168,7 +159,7 @@ class CSVIssueCreator:
             
             for index, row in df.iterrows():
                 paper_id = row['Paper ID']
-                title = row['Title']
+                title = row['Paper Title']
                 
                 # Skip if already processed
                 if paper_id in self.processed_ids:
