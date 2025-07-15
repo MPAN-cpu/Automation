@@ -25,7 +25,7 @@ jobs:
       
       - name: Run CSV Issue Creator
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           python csv_issue_creator.py test_sample_data.csv
@@ -39,6 +39,6 @@ jobs:
 
       - name: Push changes
         env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push https://x-access-token:${PERSONAL_TOKEN}@github.com/${{ github.repository }} HEAD:main
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main
