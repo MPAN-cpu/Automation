@@ -192,7 +192,7 @@ def main():
     """Main function"""
     try:
         # Get CSV file path from command line argument or use default
-        csv_file = sys.argv[1] if len(sys.argv) > 1 else "test_sample_data.csv"
+        csv_file = sys.argv[1] if len(sys.argv) > 1 else "sample_papers.csv"
         
         # Check if CSV file exists
         if not os.path.exists(csv_file):
