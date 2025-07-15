@@ -41,4 +41,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
-          git push https://x-access-token:${PERSONAL_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
+          git push https://x-access-token:${PERSONAL_TOKEN}@github.com/${{ github.repository }} HEAD:main
